@@ -44,9 +44,9 @@ RUN set -eux \
 
 FROM alpine:$ALPINE_VERSION AS rootfs-builder
 
-COPY --from=downloader-s6-sha256-sums ["/SHA256SUMS", "/"]
-COPY --from=downloader-s6-base ["/s6overlay-base.tar.xz", "/s6overlay-base.tar.xz"]
-COPY --from=downloader-s6-bin  ["/s6overlay-bin.tar.xz", "/s6overlay-bin.tar.xz"]
+COPY --from=s6-sha256-sums-downloader ["/SHA256SUMS", "/"]
+COPY --from=s6-base-downloader ["/s6overlay-base.tar.xz", "/s6overlay-base.tar.xz"]
+COPY --from=s6-bin-downloader  ["/s6overlay-bin.tar.xz", "/s6overlay-bin.tar.xz"]
 
 WORKDIR "/rootfs-build/"
 
